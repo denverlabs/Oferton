@@ -520,17 +520,198 @@
             margin-right: auto;
         }
 
-        .whatsapp-number {
+        /* WhatsApp CTA Section Enhanced */
+        .whatsapp-cta-box {
+            position: relative;
             display: inline-block;
-            font-family: 'Space Mono', monospace;
-            font-size: 1.5rem;
-            color: var(--success-green);
-            background: rgba(0, 255, 163, 0.1);
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            border: 2px solid var(--success-green);
             margin-top: 2rem;
+            padding: 2rem 3rem;
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(18, 140, 126, 0.15));
+            border-radius: 20px;
+            border: 2px solid rgba(37, 211, 102, 0.3);
+            overflow: hidden;
+        }
+
+        .whatsapp-cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(37, 211, 102, 0.1) 0%, transparent 70%);
+            animation: rotateBg 10s linear infinite;
+        }
+
+        @keyframes rotateBg {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .whatsapp-icon-animated {
+            position: relative;
+            z-index: 2;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 40px rgba(37, 211, 102, 0.4);
+            animation: whatsappPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 10px 40px rgba(37, 211, 102, 0.4), 0 0 0 0 rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 15px 50px rgba(37, 211, 102, 0.5), 0 0 0 20px rgba(37, 211, 102, 0);
+            }
+        }
+
+        .cta-text-highlight {
+            position: relative;
+            z-index: 2;
+            color: var(--success-green);
             font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-subtext {
+            position: relative;
+            z-index: 2;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .cta-social-proof {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .avatars-stack {
+            display: flex;
+        }
+
+        .avatar-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+            border: 2px solid var(--dark-bg);
+            margin-left: -10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .avatar-circle:first-child {
+            margin-left: 0;
+        }
+
+        .social-proof-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .social-proof-text strong {
+            color: var(--success-green);
+        }
+
+        /* Floating particles */
+        .particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--success-green);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: floatParticle 4s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 30%; animation-delay: 1s; }
+        .particle:nth-child(3) { left: 50%; animation-delay: 2s; }
+        .particle:nth-child(4) { left: 70%; animation-delay: 0.5s; }
+        .particle:nth-child(5) { left: 90%; animation-delay: 1.5s; }
+
+        @keyframes floatParticle {
+            0%, 100% {
+                transform: translateY(100px) scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(-50px) scale(1);
+                opacity: 0.5;
+            }
+        }
+
+        /* Enhanced CTA button for final section */
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            box-shadow: 0 10px 40px rgba(37, 211, 102, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-whatsapp::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #128C7E, #075E54);
+            transition: left 0.3s;
+        }
+
+        .btn-whatsapp:hover::before {
+            left: 0;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(37, 211, 102, 0.5);
+        }
+
+        .btn-whatsapp span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Shake animation on hover */
+        .shake-on-hover:hover {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0) translateY(-3px); }
+            25% { transform: translateX(-5px) translateY(-3px); }
+            75% { transform: translateX(5px) translateY(-3px); }
         }
 
         /* Footer */
@@ -729,7 +910,7 @@
                 <div class="step-number">1</div>
                 <h3 class="step-title">Envía "Hola"</h3>
                 <p class="step-desc">
-                    Abre WhatsApp y envía "Hola" al +54 9 11 2656 9371. 
+                    Haz clic en el botón de WhatsApp y envía "Hola".
                     Te respondemos al instante.
                 </p>
             </div>
@@ -812,17 +993,45 @@
     <section class="final-cta" id="contacto">
         <h2>Empieza a Ahorrar Hoy</h2>
         <p>
-            Únete gratis a Ofertón y recibe las mejores ofertas de tu barrio 
+            Únete gratis a Ofertón y recibe las mejores ofertas de tu barrio
             todos los días en WhatsApp. Sin costo, sin apps, sin complicaciones.
         </p>
 
-        <a href="https://wa.me/5491126569371?text=Hola%21%20Quiero%20recibir%20ofertas%20de%20Ofert%C3%B3n" 
-           class="btn btn-primary" 
-           target="_blank">
-            <span>📱 Regístrate Ahora por WhatsApp</span>
-        </a>
+        <div class="whatsapp-cta-box">
+            <div class="particles-container">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
 
-        <div class="whatsapp-number">+54 9 11 2656 9371</div>
+            <div class="whatsapp-icon-animated">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+            </div>
+
+            <p class="cta-text-highlight">Un solo clic y empiezas a ahorrar</p>
+            <p class="cta-subtext">Te enviamos las mejores ofertas cada mañana</p>
+
+            <a href="https://wa.me/5491126569371?text=Hola%21%20Quiero%20recibir%20ofertas%20de%20Ofert%C3%B3n"
+               class="btn btn-whatsapp shake-on-hover"
+               target="_blank"
+               style="margin-top: 1.5rem;">
+                <span>Unirme Gratis a Ofertón</span>
+            </a>
+
+            <div class="cta-social-proof">
+                <div class="avatars-stack">
+                    <div class="avatar-circle">M</div>
+                    <div class="avatar-circle">P</div>
+                    <div class="avatar-circle">L</div>
+                    <div class="avatar-circle">+</div>
+                </div>
+                <span class="social-proof-text"><strong>+150</strong> personas ya se unieron esta semana</span>
+            </div>
+        </div>
     </section>
 
     <footer>
